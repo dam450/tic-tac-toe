@@ -12,6 +12,7 @@ h1 {
 
 .square {
   text-align: center;
+  border-radius: 3%;
   width: 3.7rem;
   height: 3.7rem;
   background: lightgray;
@@ -25,7 +26,7 @@ h1 {
 
 }
 
-.player, .winner {
+.players, .winner {
   font-size: 2rem;
   margin-top: 1rem;
 }
@@ -35,6 +36,28 @@ button {
   margin-top: 1rem;
   width: 8rem;
   height: 2rem;
-  background: rgb(126, 126, 228);
+  background: 'white';
   cursor: pointer;
+}
+
+.blink {
+  animation: blink 1s 2;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  51% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
