@@ -1,6 +1,6 @@
 var player = null;
 var winner = null;
-const validSequences = [ //valid sequences to win
+const validSequences = [ //valid sequences to win the game
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -11,16 +11,16 @@ const validSequences = [ //valid sequences to win
   [2, 4, 6],
 ];
 
-const labPlayer = document.getElementById('player');
+const playerLbl = document.getElementById('player');
+const resetBtn = document.getElementById('resetBtn');
 const playerTurn = document.getElementById('player-turn');
 const squares = document.getElementsByClassName('square');
 
 changePlayer('X');
 
 /**
- * 
- * @param {String} id identification of choosen element (square in game)
- * @returns 
+ * this function marks player simbol by id of clicked square
+ * @param {String} id identification of chosen element (square) by player
  */
 function chooseSquare(id) {
   console.log(`Square ${id} clicked`);
@@ -40,16 +40,17 @@ function chooseSquare(id) {
   }
 
   if (hasWinner()) {
-    labPlayer.innerHTML = 'Vencedor: ';
-    //labPlayer.classList.add('blink');
-    //playerTurn.classList.add('blink');
+    playerLbl.innerHTML = 'Vencedor: ';
     console.log(`The winner is ${winner}`)
+    resetBtn.style.visibility = 'visible'
     return
   }
 
   changePlayer(player);
 
 }
+
+
 /**
  * Change player simbol value in each turn
  * @param {String} value Pass 'X' or 'O'
@@ -63,9 +64,9 @@ function changePlayer(value) {
 
 /**
  * this function checks if sequence is valid
- * @param {HTMLDivElement} s1 first square to compare
- * @param {HTMLDivElement} s2 second square to compare
- * @param {HTMLDivElement} s3 third square to compare
+ * @param {HTMLDivElement} s1 first square to compare (Div)
+ * @param {HTMLDivElement} s2 second square to compare (Div)
+ * @param {HTMLDivElement} s3 third square to compare (Div)
  * @returns True or False
  */
 function checkSequence(s1, s2, s3) {
@@ -97,28 +98,36 @@ function hasWinner() {
 
 }
 
+/**
+ * this function applies 'blink' class to Divs received as arguments 
+ * @param {HTMLDivElement} s1 Div square element 1
+ * @param {HTMLDivElement} s2 Div square element 2
+ * @param {HTMLDivElement} s3 Div square element 3
+ */
 function changeSquareColor(s1, s2, s3) {
-  s1.style.background = 'lightgreen';
   s1.classList.add('blink')
-  s2.style.background = 'lightgreen';
   s2.classList.add('blink')
-  s3.style.background = 'lightgreen';
   s3.classList.add('blink')
 
 }
 
+/**
+ * This function resets game for inicial state
+ */
 function resetGame() {
   player = null;
   winner = null;
-  labPlayer.innerHTML = 'Jogador: ';
+  playerLbl.innerHTML = 'Jogador: ';
 
   for (let i = 0; i <= 8; i++) {
     let square = squares[i];
-    square.style.background = 'lightgrey'
     square.style.color = 'lightgrey'
     square.classList.remove('blink')
     square.innerHTML = '-'
   }
+
   changePlayer('X');
+
+  resetBtn.style.visibility = 'hidden'
 
 }

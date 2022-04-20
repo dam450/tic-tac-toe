@@ -32,16 +32,19 @@ h1 {
 }
 
 button {
+  border-radius: 5px;
   font-size: 1rem;
   margin-top: 1rem;
   width: 8rem;
   height: 2rem;
-  background: 'white';
+  background: azure;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .blink {
   animation: blink 1s 2;
+  background-color: lightgreen;
 }
 
 @keyframes blink {
