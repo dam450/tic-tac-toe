@@ -2,6 +2,9 @@
 
 body{
   text-align: center;
+  width: 100%;
+  min-width: 80vw;
+  min-height: 80vh;
 
 }
 
@@ -26,7 +29,7 @@ h1 {
 
 }
 
-.players, .winner {
+.players {
   font-size: 2rem;
   margin-top: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -67,5 +70,24 @@ button {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 450px) {
+  .square {
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+  }
+  body{
+    min-width: 75vw;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  .players {
+    font-size: 1.3rem;
   }
 }
