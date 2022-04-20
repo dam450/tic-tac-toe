@@ -4,7 +4,7 @@ Jogo da velha
 
 ### Site
 
-https://github.com/dam450/tic-tac-toe
+https://dam450.github.io/tic-tac-toe/
 
 ### Descrição
 
