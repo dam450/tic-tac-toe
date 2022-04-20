@@ -29,6 +29,11 @@ h1 {
 .players, .winner {
   font-size: 2rem;
   margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#player-turn{
+  font-family: 'Permanent Marker', cursive;
 }
 
 button {

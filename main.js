@@ -1,5 +1,7 @@
 var player = null;
 var winner = null;
+let rodada = 0;
+
 const validSequences = [ //valid sequences to win the game
   [0, 1, 2],
   [3, 4, 5],
@@ -20,14 +22,19 @@ changePlayer('X');
 
 /**
  * this function marks player simbol by id of clicked square
- * @param {String} id identification of chosen element (square) by player
+ * @param {String} elementId identification of chosen element (square) by player
  */
-function chooseSquare(id) {
-  console.log(`Square ${id} clicked`);
-  let square = document.getElementById(id);
+function chooseSquare(elementId) {
+  console.log(`Square ${elementId} clicked`);
+
+  let square = document.getElementById(elementId);
+
+  rodada++
 
   if (square.innerHTML !== '-') return;
   if (winner !== null) return;
+
+
 
   square.innerHTML = player;
 
@@ -44,7 +51,12 @@ function chooseSquare(id) {
     console.log(`The winner is ${winner}`)
     resetBtn.style.visibility = 'visible'
     return
+  } else if (rodada >= 9) {
+    gameDraw();
+    return
   }
+
+
 
   changePlayer(player);
 
@@ -53,7 +65,7 @@ function chooseSquare(id) {
 
 /**
  * Change player simbol value in each turn
- * @param {String} value Pass 'X' or 'O'
+ * @param {String} value Pass 'X' or 'O' as value
  */
 function changePlayer(value) {
   player = value;
@@ -117,6 +129,7 @@ function changeSquareColor(s1, s2, s3) {
 function resetGame() {
   player = null;
   winner = null;
+  rodada = 0;
   playerLbl.innerHTML = 'Jogador: ';
 
   for (let i = 0; i <= 8; i++) {
@@ -129,5 +142,13 @@ function resetGame() {
   changePlayer('X');
 
   resetBtn.style.visibility = 'hidden'
+
+}
+
+function gameDraw() {
+  console.log('it is a draw')
+  resetBtn.style.visibility = 'visible'
+  playerLbl.innerHTML = 'Empate ';
+  playerTurn.innerHTML = ''
 
 }
